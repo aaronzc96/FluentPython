@@ -1,5 +1,6 @@
 import array
 import os
+import dis
 from collections import namedtuple
 
 symbols = '$¢£¥€¤'
@@ -82,4 +83,16 @@ print(board)
 board = [['_'] * 3] * 3
 board[1][2] = 'X'
 print(board)
+
+# += *= 作用在可变与不可变序列上结果差别：可变原地加法 不可变地址改变
+a = [1, 2, 3]
+b = [1, 3, 4]
+c = (1, 2, 4)
+d = (2, 4, 5)
+print(id(a), id(c))
+a += b
+c += d
+print(id(a), id(c))
+
+dis.dis('s[a] += b')
 
